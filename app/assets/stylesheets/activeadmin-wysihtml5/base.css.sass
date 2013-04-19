@@ -161,13 +161,13 @@ body.active_admin form
     +nested-reset
     // float: left
     // width: 100% - 11%
-    width: 76%
+    // width: 76%
     margin-left: 20%
 
     &> textarea
       font-size: 13px
       line-height: 17px
-      width: 100% !important
+      width: 95% !important
 
       &.source
         font-family: Pragmata, Menlo, 'DejaVu LGC Sans Mono', 'DejaVu Sans Mono', Consolas, 'Everson Mono', 'Lucida Console', 'Andale Mono', 'Nimbus Mono L', 'Liberation Mono', FreeMono, 'Osaka Monospaced', Courier, 'New Courier', monospace
@@ -239,6 +239,15 @@ body.active_admin form
 
           &.source span
             +aside-icon(file)
+
+          &.left span
+            +toolbar-icon(align-left)
+
+          &.center span
+            +toolbar-icon(align-center)
+
+          &.right span
+            +toolbar-icon(align-right)
 
         &>.blocks-selector
           position: relative

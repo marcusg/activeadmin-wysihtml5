@@ -59,14 +59,18 @@ module Formtastic
           [ :ul, :ol, :outdent, :indent ],
           [ :link ],
           [ :image ],
-          [ :source ]
+          [ :source ],
+          [ :left, :center, :right ]
         ]
         command_mapper = {
           link: 'createLink',
           image: 'insertImage',
           ul: 'insertUnorderedList',
           ol: 'insertOrderedList',
-          source: 'change_view'
+          source: 'change_view',
+          center: 'justifyCenter',
+          left: 'justifyLeft',
+          right: 'justifyRight'
         }
 
         toolbar_commands = options[:commands] || input_html_options[:commands] || :basic
