@@ -181,7 +181,7 @@ body.active_admin form
         padding-right: 5px
 
         &> a,
-        &> .blocks-selector
+        &> .blocks-selector, .colors-selector
           +linear-gradient(white, #E6E6E6)
           padding: 4px 10px
           display: inline-block
@@ -249,6 +249,60 @@ body.active_admin form
           &.right span
             +toolbar-icon(align-right)
 
+        &>.colors-selector
+          position: relative
+
+          span
+            display: inline-block
+            padding-left: 16px
+            padding-right: 9px
+            position: relative
+            text-indent: -1000em
+
+            &:before
+              content: ""
+              position: absolute
+              left: -2px
+              top: 2px
+              +icon(tint)
+            &:after
+              content: ""
+              position: absolute
+              top: 8px
+              right: -2px
+              border-bottom: 4px solid transparent
+              border-left: 4px solid transparent
+              border-top: 4px solid #000000
+              border-right: 4px solid transparent
+              display: inline-block
+              height: 0
+              vertical-align: top
+
+          ul
+            display: none
+            position: absolute
+            z-index: 2
+            top: 26px
+            left: 0px
+            width: 140px
+            background: white
+            box-shadow: 0 2px 5px rgba(black, 0.5)
+            padding: 10px 0
+
+            li a
+              padding: 3px 15px
+              display: block
+              text-decoration: none
+              color: #333
+              text-shadow: none
+
+              &:hover
+                background-color: $link-color
+                color: white
+
+          &:hover ul
+            display: block
+
         &>.blocks-selector
           position: relative
 
@@ -305,7 +359,7 @@ body.active_admin form
       &.wysihtml5-commands-disabled
         &> li
           &> a,
-          &> .blocks-selector
+          &> .blocks-selector, .colors-selector
             background: #E6E6E6 !important
             color: #777
 
@@ -313,6 +367,6 @@ body.active_admin form
               background: #E6E6E6 !important
               color: #777 !important
 
-          &> .blocks-selector:hover ul
+          &> .blocks-selector:hover ul, .colors-selector:hover ul
             display: none !important
 

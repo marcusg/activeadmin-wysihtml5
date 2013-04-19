@@ -5,7 +5,14 @@ module Formtastic
       COMMANDS_PRESET = {
         barebone: [ :bold, :italic, :link, :source ],
         basic: [ :bold, :italic, :ul, :ol, :link, :image, :source ],
-        all: [ :bold, :italic, :underline, :ul, :ol, :outdent, :indent, :link, :image, :source ]
+        all: [ :bold, :italic, :underline, :ul, :ol, :outdent, :indent, :link, :image, :source, :center, :left, :right ]
+      }
+
+      COLORS_PRESET = {
+        all: [:black, :silver, :maroon, :fuchsia, :lime, :navy,
+              :aqua, :red, :gray, :purple, :green, :olive,
+              :yellow, :blue, :teal ],
+        basic: [ :black, :red, :yellow, :blue, :green ]
       }
 
       BLOCKS_PRESET = {
@@ -42,6 +49,37 @@ module Formtastic
                       data: {
                         wysihtml5_command: 'formatBlock',
                         wysihtml5_command_value: block
+                    })
+                  end
+                end.join.html_safe
+              end
+            end
+          end
+        else
+          "".html_safe
+        end
+      end
+
+      def toolbar_colors
+        colors = options[:colors] || input_html_options[:colors] || :all
+        if !colors.is_a? Array
+          colors = COLORS_PRESET[colors.to_sym]
+        end
+
+        if colors.any?
+          template.content_tag(:li) do
+            template.content_tag(:div, class: "editor-command colors-selector") do
+              template.content_tag(:span, I18n.t("wysihtml5.color_style")) <<
+              template.content_tag(:ul) do
+                colors.map do |color|
+                  template.content_tag(:li, :style => "border-right: 5px solid #{color}") do
+                    template.content_tag(
+                      :a,
+                      I18n.t("wysihtml5.colors.#{color}", default: color.to_s.titleize),
+                      href: "javascript:void(0);",
+                      data: {
+                        wysihtml5_command: 'foreColor',
+                        wysihtml5_command_value: color
                     })
                   end
                 end.join.html_safe
@@ -105,7 +143,7 @@ module Formtastic
 
       def toolbar
         template.content_tag(:ul, id: "#{input_html_options[:id]}-toolbar", class: "toolbar") do
-          toolbar_blocks << toolbar_commands
+          toolbar_blocks << toolbar_colors << toolbar_commands
         end << toolbar_dialogs
       end
 
