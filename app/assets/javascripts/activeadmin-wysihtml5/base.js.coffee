@@ -122,6 +122,8 @@
             element: $uploader.get(0)
             action: '/admin/images.json'
             multiple: false
+            params:
+              process_now: true # to bypass the background worker
             template: '<div class="qq-uploader"><div class="qq-upload-drop-area"></div><div class="qq-upload-button">' +
                         I18n.t("fileupload.image.button") + '</div><ul class="qq-upload-list"></ul></div>'
             onComplete: ->
