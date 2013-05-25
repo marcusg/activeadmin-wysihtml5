@@ -4,8 +4,9 @@ module Formtastic
 
       COMMANDS_PRESET = {
         barebone: [ :bold, :italic, :link, :source ],
-        basic: [ :bold, :italic, :ul, :ol, :link, :image, :source ],
-        all: [ :bold, :italic, :underline, :ul, :ol, :outdent, :indent, :link, :image, :source, :center, :left, :right ]
+        basic: [ :bold, :italic, :ul, :ol, :link, :image, :source, :undo, :redo ],
+        all: [  :bold, :italic, :underline, :ul, :ol, :outdent, :indent, :link,
+                :image, :source, :center, :left, :right, :undo, :redo ]
       }
 
       COLORS_PRESET = {
@@ -93,6 +94,7 @@ module Formtastic
 
       def toolbar_commands
         command_groups = [
+          [ :undo, :redo ],
           [ :bold, :italic, :underline ],
           [ :ul, :ol, :outdent, :indent ],
           [ :link ],
