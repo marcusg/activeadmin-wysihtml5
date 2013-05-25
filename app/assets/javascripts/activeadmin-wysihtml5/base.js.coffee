@@ -43,6 +43,7 @@
         toolbar: $toolbar.attr('id'),
         stylesheets: "/assets/activeadmin-wysihtml5/wysiwyg.css",
         parserRules: wysihtml5ParserRules
+        useLineBreaks: false
       })
 
       $button = $toolbar.find('a[data-wysihtml5-command=createLink]').click ->
