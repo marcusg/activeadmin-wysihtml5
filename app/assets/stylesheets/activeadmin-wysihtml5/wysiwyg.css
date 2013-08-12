@@ -103,6 +103,11 @@ p {
   color: aqua;
 }
 
+.wysiwyg-color-inherit {
+  color: inherit !important;
+}
+
+
 .wysiwyg-text-align-right {
   text-align: right;
 }

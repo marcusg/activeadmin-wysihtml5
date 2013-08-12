@@ -10,10 +10,10 @@ module Formtastic
       }
 
       COLORS_PRESET = {
-        all: [:black, :silver, :maroon, :fuchsia, :lime, :navy,
+        all: [:inherit, :black, :silver, :maroon, :fuchsia, :lime, :navy,
               :aqua, :red, :gray, :purple, :green, :olive,
               :yellow, :blue, :teal ],
-        basic: [ :black, :red, :yellow, :blue, :green ]
+        basic: [:inherit, :black, :red, :yellow, :blue, :green ]
       }
 
       BLOCKS_PRESET = {
